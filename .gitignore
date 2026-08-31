@@ -2,3 +2,5 @@
 .idea/
 .cursor/
 
+preview-server.js
+node_modules/

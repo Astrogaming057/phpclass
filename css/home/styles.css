@@ -1,0 +1,43 @@
+.site {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.site-header,
+.site-footer {
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.site-main {
+    width: min(520px, 100%);
+    margin: auto;
+    padding: 2rem 1.6rem 1.75rem;
+}
+
+.sidebar {
+    display: none;
+}
+
+.intro {
+    text-align: center;
+}
+
+.photo {
+    display: block;
+    width: 148px;
+    height: 148px;
+    object-fit: cover;
+    border-radius: 50%;
+    object-position: top right;
+    border: 4px solid #c084fc;
+    background-color: #000;
+    margin: 0 auto 1rem;
+}
+
+.handle {
+    color: #f472b6;
+    font-weight: 600;
+    margin-bottom: 0;
+}
