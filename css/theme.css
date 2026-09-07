@@ -224,42 +224,6 @@ h2 {
     text-align: center;
 }
 
-.countdown {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.7rem;
-}
-
-.count-box {
-    text-align: center;
-    padding: 1rem 0.5rem;
-    border-radius: 16px;
-    background-color: #21182c;
-    border: 1px solid #3b2a52;
-}
-
-.count-value {
-    display: block;
-    font-family: "Outfit", "Segoe UI", sans-serif;
-    font-size: 2rem;
-    font-weight: 700;
-    color: #ffffff;
-}
-
-.count-label {
-    color: #c084fc;
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-}
-
-.countdown-done {
-    margin-top: 1rem;
-    color: #f472b6;
-    font-weight: 600;
-}
-
 @media (max-width: 900px) {
     .countdown {
         grid-template-columns: 1fr 1fr;
