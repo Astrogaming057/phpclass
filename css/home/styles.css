@@ -1,23 +1,7 @@
-.site {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-.site-header,
-.site-footer {
-    width: 100%;
-    flex-shrink: 0;
-}
-
 .site-main {
     width: min(520px, 100%);
     margin: auto;
     padding: 2rem 1.6rem 1.75rem;
-}
-
-.sidebar {
-    display: none;
 }
 
 .intro {

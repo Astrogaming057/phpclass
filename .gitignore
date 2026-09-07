@@ -4,3 +4,7 @@
 
 preview-server.js
 node_modules/
+certs/
+maintenance-server.out.log
+maintenance-server.err.log
+maintenance-server.log

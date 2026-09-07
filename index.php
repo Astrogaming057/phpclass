@@ -1,37 +1,30 @@
-<!DOCTYPE html>
+<?php $currentPage = 'home'; ?>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home | Izaiah</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/theme.css">
-    <link rel="stylesheet" href="css/home/styles.css">
+    <link rel="stylesheet" type="text/css" href="/css/theme.css">
+    <link rel="stylesheet" type="text/css" href="/css/home/styles.css">
 </head>
 <body data-random-banner="1">
 <div class="site">
     <header class="panel site-header">
-        <a class="brand" href="index.php">
-            <span class="brand-name">Izaiah</span>
-            <span class="brand-handle">@Astrogaming057</span>
-        </a>
+        <?php include __DIR__ . '/includes/header.php'; ?>
         <nav class="navbar">
-            <a class="nav-link is-active" href="index.php">Home</a>
-            <a class="nav-link" href="loops.php">Loops</a>
-            <a class="nav-link" href="countdown.php">Countdown</a>
-            <a class="nav-link" href="other.php">Other</a>
+            <?php include __DIR__ . '/includes/nav.php'; ?>
         </nav>
     </header>
 
-    <aside class="panel sidebar sidebar-left hidden">
-
-    </aside>
-
     <main class="panel site-main">
         <div class="intro">
-            <img class="photo" src="images/20251104_103611.jpg" alt="Izaiah">
+            <img class="photo" src="/images/20251104_103611.jpg" alt="Izaiah">
             <p class="eyebrow">Hello, I'm</p>
             <h1>Izaiah</h1>
             <p class="handle">aka @Astrogaming057</p>
@@ -73,14 +66,10 @@
         </section>
     </main>
 
-    <aside class="panel sidebar sidebar-right hidden">
-
-    </aside>
-
     <footer class="panel site-footer">
-        <p>Izaiah Niemuth · PHP class</p>
+        <?php include __DIR__ . '/includes/footer.php'; ?>
     </footer>
 </div>
-<script src="js/home/index.js"></script>
+<script src="/js/home/index.js"></script>
 </body>
 </html>

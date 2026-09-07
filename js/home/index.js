@@ -1,6 +1,6 @@
 // background script
 const bg = new Image();
-bg.src = "images/GSUJ4tFXoAAjUZe.webp";
+bg.src = "/images/GSUJ4tFXoAAjUZe.webp";
 
 if (document.body.dataset.randomBanner === "1") {
     const focusX = Math.random();
