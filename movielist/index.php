@@ -1,3 +1,6 @@
+<?php
+$currentPage = 'movielist';
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -37,21 +40,21 @@
 
 
             <?php
-            
-            
-            $con = mysqli_connect('localhost', 'dbuser', 'dbdev123');
-            mysqli_select_db($con, 'phpclass');
+            try {
+                $con = mysqli_connect('localhost', 'dbuser', 'dbdev123');
+                mysqli_select_db($con, 'phpclass');
 
-            $rs = mysqli_query($con, "SELECT * FROM movielist");
-            while ($row = mysqli_fetch_assoc($rs)) {
-                echo "<tr>";
-                echo "<td>" . $row['movieID'] . "</td>";
-                echo "<td>" . $row['movieTitle'] . "</td>";
-                echo "<td>" . $row['movieRating'] . "</td>";
-                echo "</tr>";
+                $rs = mysqli_query($con, "SELECT * FROM movielist");
+                while ($row = mysqli_fetch_assoc($rs)) {
+                    echo "<tr>";
+                    echo "<td>" . $row['movieID'] . "</td>";
+                    echo "<td>" . $row['movieTitle'] . "</td>";
+                    echo "<td>" . $row['movieRating'] . "</td>";
+                    echo "</tr>";
+                }
+            } catch (Throwable $e) {
+                echo '<tr><td colspan="3">' . htmlspecialchars($e->getMessage()) . '</td></tr>';
             }
-            
-            
             ?>
             
         </table>
