@@ -41,8 +41,7 @@ $currentPage = 'movielist';
 
             <?php
             try {
-                $con = mysqli_connect('localhost', 'dbuser', 'dbdev123');
-                mysqli_select_db($con, 'phpclass');
+                include __DIR__ . '/../includes/db.php';
 
                 $rs = mysqli_query($con, "SELECT * FROM movielist");
                 while ($row = mysqli_fetch_assoc($rs)) {
