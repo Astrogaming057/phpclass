@@ -45,9 +45,9 @@
             $rs = mysqli_query($con, "SELECT * FROM movielist");
             while ($row = mysqli_fetch_assoc($rs)) {
                 echo "<tr>";
-                echo "<td>" . $row['id'] . "</td>";
-                echo "<td>" . $row['title'] . "</td>";
-                echo "<td>" . $row['rating'] . "</td>";
+                echo "<td>" . $row['movieID'] . "</td>";
+                echo "<td>" . $row['movieTitle'] . "</td>";
+                echo "<td>" . $row['movieRating'] . "</td>";
                 echo "</tr>";
             }
             
