@@ -57,9 +57,11 @@ $currentPage = 'movielist';
             ?>
             
         </table>
+        <a href="movieadd.php">Add Movie</a>
     </main>
-
+    
     <footer class="panel site-footer">
+        
         <?php include __DIR__ . '/../includes/footer.php'; ?>
     </footer>
 </div>
