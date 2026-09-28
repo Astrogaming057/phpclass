@@ -13,12 +13,7 @@ $currentPage = 'movielist';
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/theme.css">
-    <style>
-        table {
-            border-width: 1px;
-            width: 100%;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="/css/movielist/styles.css">
 </head>
 <body>
 <div class="site">

@@ -40,75 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/theme.css">
-    <style>
-        .movie-form {
-            max-width: 520px;
-            margin: 0 auto;
-            border: 1px solid rgba(192, 132, 252, 0.35);
-            border-radius: 16px;
-            padding: 1.5rem;
-        }
-
-        .movie-form h3 {
-            text-align: center;
-            margin-bottom: 1.25rem;
-        }
-
-        .movie-form table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 1.25rem;
-        }
-
-        .movie-form th,
-        .movie-form td {
-            border: 1px solid rgba(192, 132, 252, 0.35);
-            padding: 0.75rem;
-            text-align: left;
-            vertical-align: middle;
-        }
-
-        .movie-form th {
-            width: 35%;
-            white-space: nowrap;
-        }
-
-        .movie-form input[type="text"] {
-            width: 100%;
-            padding: 0.55rem 0.7rem;
-            border: 1px solid #3b2a52;
-            border-radius: 8px;
-            background: #21182c;
-            color: #f3eef8;
-            font: inherit;
-        }
-
-        .movie-form .actions {
-            text-align: center;
-        }
-
-        .movie-form button {
-            padding: 0.55rem 1.1rem;
-            border-radius: 999px;
-            border: 1px solid #c084fc;
-            background: #2c203b;
-            color: #ffffff;
-            font: inherit;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .movie-form .status {
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-
-        .back-link {
-            display: block;
-            text-align: center;
-            margin-top: 1rem;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="/css/movielist/styles.css">
 </head>
 <body>
 <div class="site">
