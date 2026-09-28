@@ -113,6 +113,7 @@ function fieldValue(array $fields, string $name): string
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/theme.css">
     <link rel="stylesheet" type="text/css" href="/css/customers/styles.css">
+    <link rel="script" type="text/js" href="/js/customers/index.js">
 </head>
 <body>
 <div class="site">
@@ -218,22 +219,5 @@ function fieldValue(array $fields, string $name): string
         <?php include __DIR__ . '/../includes/footer.php'; ?>
     </footer>
 </div>
-<script>
-(function () {
-    var password = document.getElementById('password');
-    var confirmPassword = document.getElementById('confirmPassword');
-
-    function checkPasswords() {
-        if (confirmPassword.value && password.value !== confirmPassword.value) {
-            confirmPassword.setCustomValidity('Passwords do not match.');
-        } else {
-            confirmPassword.setCustomValidity('');
-        }
-    }
-
-    password.addEventListener('input', checkPasswords);
-    confirmPassword.addEventListener('input', checkPasswords);
-})();
-</script>
 </body>
 </html>
