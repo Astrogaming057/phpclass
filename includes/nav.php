@@ -4,3 +4,4 @@
 <a class="nav-link<?php echo (!empty($currentPage) && $currentPage === 'magic8ball') ? ' is-active' : ''; ?>" href="/magic8ball/">Magic 8-Ball</a>
 <a class="nav-link<?php echo (!empty($currentPage) && $currentPage === 'diceroller') ? ' is-active' : ''; ?>" href="/diceroller/">Dice Roller</a>
 <a class="nav-link<?php echo (!empty($currentPage) && $currentPage === 'movielist') ? ' is-active' : ''; ?>" href="/movielist/">Movie List</a>
+<a class="nav-link<?php echo (!empty($currentPage) && $currentPage === 'customers') ? ' is-active' : ''; ?>" href="/customers/">Customers</a>
