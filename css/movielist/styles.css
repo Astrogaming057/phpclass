@@ -69,18 +69,18 @@
     margin-top: 1rem;
 }
 
-.actions-cell a {
-    color: #f472b6;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.actions-cell a:hover,
-.actions-cell a:focus-visible {
-    text-decoration: underline;
-}
-
 table {
     border-width: 1px;
     width: 100%;
+}
+
+table a {
+    color: #f472b6;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+table a:hover,
+table a:focus-visible {
+    text-decoration: underline;
 }

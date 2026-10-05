@@ -31,7 +31,6 @@ $currentPage = 'movielist';
                 <th>id</th>
                 <th>title</th>
                 <th>rating</th>
-                <th>actions</th>
             </tr>
 
             <?php
@@ -43,17 +42,12 @@ $currentPage = 'movielist';
                     $id = (int) $row['movieID'];
                     echo "<tr>";
                     echo "<td>" . htmlspecialchars($row['movieID']) . "</td>";
-                    echo "<td>" . htmlspecialchars($row['movieTitle']) . "</td>";
+                    echo '<td><a href="movieupdate.php?id=' . $id . '">' . htmlspecialchars($row['movieTitle']) . '</a></td>';
                     echo "<td>" . htmlspecialchars($row['movieRating']) . "</td>";
-                    echo '<td class="actions-cell">';
-                    echo '<a href="movieupdate.php?id=' . $id . '">Update</a>';
-                    echo ' | ';
-                    echo '<a href="moviedelete.php?id=' . $id . '" onclick="return confirm(\'Are you sure you want to delete this movie?\');">Delete</a>';
-                    echo '</td>';
                     echo "</tr>";
                 }
             } catch (Throwable $e) {
-                echo '<tr><td colspan="4">' . htmlspecialchars($e->getMessage()) . '</td></tr>';
+                echo '<tr><td colspan="3">' . htmlspecialchars($e->getMessage()) . '</td></tr>';
             }
             ?>
 
