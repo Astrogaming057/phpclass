@@ -218,22 +218,6 @@ function fieldValue(array $fields, string $name): string
         <?php include __DIR__ . '/../includes/footer.php'; ?>
     </footer>
 </div>
-<script>
-(function () {
-    var password = document.getElementById('password');
-    var confirmPassword = document.getElementById('confirmPassword');
-
-    function checkPasswords() {
-        if (confirmPassword.value && password.value !== confirmPassword.value) {
-            confirmPassword.setCustomValidity('Passwords do not match.');
-        } else {
-            confirmPassword.setCustomValidity('');
-        }
-    }
-
-    password.addEventListener('input', checkPasswords);
-    confirmPassword.addEventListener('input', checkPasswords);
-})();
-</script>
+<script src="/js/customers/index.js"></script>
 </body>
 </html>
