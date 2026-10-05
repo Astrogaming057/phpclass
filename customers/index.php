@@ -46,9 +46,10 @@ $currentPage = 'customers';
 
                 $rs = mysqli_query($con, 'SELECT * FROM customers');
                 while ($row = mysqli_fetch_assoc($rs)) {
+                    $id = (int) $row['id'];
                     echo '<tr>';
                     echo '<td>' . htmlspecialchars($row['id']) . '</td>';
-                    echo '<td>' . htmlspecialchars($row['first']) . '</td>';
+                    echo '<td><a href="customerupdate.php?id=' . $id . '">' . htmlspecialchars($row['first']) . '</a></td>';
                     echo '<td>' . htmlspecialchars($row['last']) . '</td>';
                     echo '<td>' . htmlspecialchars($row['address']) . '</td>';
                     echo '<td>' . htmlspecialchars($row['city']) . '</td>';

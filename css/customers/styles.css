@@ -17,6 +17,17 @@
     white-space: nowrap;
 }
 
+.customer-table a {
+    color: #f472b6;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.customer-table a:hover,
+.customer-table a:focus-visible {
+    text-decoration: underline;
+}
+
 .create-title {
     text-align: center;
     font-family: "Outfit", "Segoe UI", sans-serif;
