@@ -7,7 +7,6 @@ $movieRating = '';
 
 include __DIR__ . '/../includes/db.php';
 
-// Handle update POST first
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $movieID = filter_var($_POST['movieID'] ?? null, FILTER_VALIDATE_INT);
     $movieTitle = trim($_POST['movieTitle'] ?? '');
@@ -22,13 +21,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = 'Please enter both a movie title and a rating.';
     } else {
         try {
-            $stmt = $pdo->prepare(
-                'UPDATE movielist SET movieTitle = :Title, movieRating = :Rating WHERE movieID = :ID'
+            $stmt = mysqli_prepare(
+                $con,
+                'UPDATE movielist SET movieTitle = ?, movieRating = ? WHERE movieID = ?'
             );
-            $stmt->bindValue(':Title', $movieTitle);
-            $stmt->bindValue(':Rating', $movieRating);
-            $stmt->bindValue(':ID', $movieID, PDO::PARAM_INT);
-            $stmt->execute();
+            mysqli_stmt_bind_param($stmt, 'ssi', $movieTitle, $movieRating, $movieID);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_close($stmt);
 
             header('Location: index.php');
             exit;
@@ -37,7 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 } else {
-    // GET: require a valid integer ID
     if (!isset($_GET['id'])) {
         header('Location: index.php');
         exit;
@@ -50,10 +48,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     try {
-        $stmt = $pdo->prepare('SELECT movieID, movieTitle, movieRating FROM movielist WHERE movieID = :ID');
-        $stmt->bindValue(':ID', $movieID, PDO::PARAM_INT);
-        $stmt->execute();
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt = mysqli_prepare(
+            $con,
+            'SELECT movieID, movieTitle, movieRating FROM movielist WHERE movieID = ?'
+        );
+        mysqli_stmt_bind_param($stmt, 'i', $movieID);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        $row = mysqli_fetch_assoc($result);
+        mysqli_stmt_close($stmt);
 
         if (!$row) {
             header('Location: index.php');

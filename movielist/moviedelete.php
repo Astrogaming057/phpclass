@@ -13,11 +13,11 @@ if ($movieID === false) {
 }
 
 try {
-    $stmt = $pdo->prepare('DELETE FROM movielist WHERE movieID = :ID');
-    $stmt->bindValue(':ID', $movieID, PDO::PARAM_INT);
-    $stmt->execute();
+    $stmt = mysqli_prepare($con, 'DELETE FROM movielist WHERE movieID = ?');
+    mysqli_stmt_bind_param($stmt, 'i', $movieID);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
 } catch (Throwable $e) {
-    // Still send the user back to the list; no frontend on this page.
 }
 
 header('Location: index.php');
