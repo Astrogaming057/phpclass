@@ -1,5 +1,71 @@
 <?php
+session_start();
+
 $currentPage = 'login';
+
+$err = "";
+$Username = "";
+$Password = "";
+$Password2 = "";
+$Role = "";
+$Email = "";
+
+if (!isset($_SESSION["UID"])) {
+    header("Location: index.php");
+    exit;
+}
+
+if (isset($_POST["btnSubmit"])) {
+    if (!empty($_POST["txtUsername"])) {
+        $Username = $_POST["txtUsername"];
+    } else {
+        $err = "Username is Required!";
+    }
+    if (!empty($_POST["txtPassword"])) {
+        $Password = $_POST["txtPassword"];
+    } else {
+        $err = "Password is Required!";
+    }
+    if (!empty($_POST["txtPassword2"])) {
+        $Password2 = $_POST["txtPassword2"];
+    } else {
+        $Password2 = "";
+    }
+    if ($Password != $Password2) {
+        $err = "Password do not Match!";
+    }
+    if (!empty($_POST["txtRole"])) {
+        $Role = $_POST["txtRole"];
+    } else {
+        $err = "Role is Required!";
+    }
+    if (!empty($_POST["txtEmail"])) {
+        $Email = $_POST["txtEmail"];
+    } else {
+        $err = "Email is Required!";
+    }
+
+    if ($err == "") {
+
+        $memberKey = "xxxxxxxxx";
+
+        try {
+            include __DIR__ . '/../includes/db.php';
+
+            $sql = mysqli_prepare($con, "insert into memberLogin (memberName,memberEmail,memberPassword,roleID,memberKey) values (?,?,?,?,?)");
+            mysqli_stmt_bind_param($sql, "sssis", $Username, $Email, $Password, $Role, $memberKey);
+            mysqli_stmt_execute($sql);
+
+            $Username = "";
+            $Password = "";
+            $Password2 = "";
+            $Email = "";
+            $err = "Member Added To Database";
+        } catch (Throwable $e) {
+            $err = $e->getMessage();
+        }
+    }
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -27,14 +93,19 @@ $currentPage = 'login';
     <main class="panel site-main">
         <h3 class="page-title">Admin Page</h3>
 
-        <form class="login-form admin-form" action="admin.php">
+        <form class="login-form admin-form" method="post" action="admin.php">
             <h3>Add New Member</h3>
+
+            <?php if ($err != ""): ?>
+                <p class="status"><?php echo htmlspecialchars($err); ?></p>
+            <?php endif; ?>
 
             <table>
                 <tr>
                     <th><label for="txtUsername">Username</label></th>
                     <td>
-                        <input type="text" id="txtUsername" name="txtUsername" required>
+                        <input type="text" id="txtUsername" name="txtUsername" required
+                               value="<?php echo htmlspecialchars($Username); ?>">
                     </td>
                 </tr>
                 <tr>
@@ -53,16 +124,17 @@ $currentPage = 'login';
                     <th><label for="txtRole">Role</label></th>
                     <td>
                         <select id="txtRole" name="txtRole">
-                            <option value="1">Admin</option>
-                            <option value="2">Operator</option>
-                            <option value="3">Member</option>
+                            <option value="1"<?php echo $Role == "1" ? " selected" : ""; ?>>Admin</option>
+                            <option value="2"<?php echo $Role == "2" ? " selected" : ""; ?>>Operator</option>
+                            <option value="3"<?php echo $Role == "3" ? " selected" : ""; ?>>Member</option>
                         </select>
                     </td>
                 </tr>
                 <tr>
                     <th><label for="txtEmail">Email</label></th>
                     <td>
-                        <input type="email" id="txtEmail" name="txtEmail" required>
+                        <input type="text" id="txtEmail" name="txtEmail" required
+                               value="<?php echo htmlspecialchars($Email); ?>">
                     </td>
                 </tr>
             </table>

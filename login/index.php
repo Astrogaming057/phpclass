@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $currentPage = 'login';
 $msg = '';
 
@@ -9,6 +11,7 @@ if (!empty($_POST["txtUsername"])) {
         $passwd = $_POST["txtPassword"];
 
         if ($username == "admin" && $passwd == "p@ss") {
+            $_SESSION["UID"] = $username;
             header("Location: admin.php");
             exit;
         } else {
