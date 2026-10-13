@@ -15,14 +15,34 @@ if (!isset($_SESSION["UID"])) {
     exit;
 }
 
+$roles = [];
+$dbError = "";
+
+try {
+    include __DIR__ . '/../includes/db.php';
+
+    $rs = mysqli_query($con, "select roleID, roleName from role order by roleID");
+    while ($row = mysqli_fetch_assoc($rs)) {
+        $roles[] = $row;
+    }
+} catch (Throwable $e) {
+    $dbError = $e->getMessage();
+}
+
 if (isset($_POST["btnSubmit"])) {
     if (!empty($_POST["txtUsername"])) {
         $Username = $_POST["txtUsername"];
+        if (strlen($Username) < 4) {
+            $err = "Username must be at least 4 characters!";
+        }
     } else {
         $err = "Username is Required!";
     }
     if (!empty($_POST["txtPassword"])) {
         $Password = $_POST["txtPassword"];
+        if (strlen($Password) < 4) {
+            $err = "Password must be at least 4 characters!";
+        }
     } else {
         $err = "Password is Required!";
     }
@@ -41,17 +61,19 @@ if (isset($_POST["btnSubmit"])) {
     }
     if (!empty($_POST["txtEmail"])) {
         $Email = $_POST["txtEmail"];
+        $atPos = strpos($Email, "@");
+        if ($atPos === false || strpos($Email, ".", $atPos) === false) {
+            $err = "Email must contain an @ and a period after the @!";
+        }
     } else {
         $err = "Email is Required!";
     }
 
-    if ($err == "") {
+    if ($err == "" && $dbError == "") {
 
         $memberKey = "xxxxxxxxx";
 
         try {
-            include __DIR__ . '/../includes/db.php';
-
             $sql = mysqli_prepare($con, "insert into memberLogin (memberName,memberEmail,memberPassword,roleID,memberKey) values (?,?,?,?,?)");
             mysqli_stmt_bind_param($sql, "sssis", $Username, $Email, $Password, $Role, $memberKey);
             mysqli_stmt_execute($sql);
@@ -65,6 +87,10 @@ if (isset($_POST["btnSubmit"])) {
             $err = $e->getMessage();
         }
     }
+}
+
+if ($err == "" && $dbError != "") {
+    $err = $dbError;
 }
 ?>
 <!doctype html>
@@ -104,29 +130,31 @@ if (isset($_POST["btnSubmit"])) {
                 <tr>
                     <th><label for="txtUsername">Username</label></th>
                     <td>
-                        <input type="text" id="txtUsername" name="txtUsername" required
+                        <input type="text" id="txtUsername" name="txtUsername" required minlength="4"
                                value="<?php echo htmlspecialchars($Username); ?>">
                     </td>
                 </tr>
                 <tr>
                     <th><label for="txtPassword">Password</label></th>
                     <td>
-                        <input type="password" id="txtPassword" name="txtPassword" required>
+                        <input type="password" id="txtPassword" name="txtPassword" required minlength="4">
                     </td>
                 </tr>
                 <tr>
                     <th><label for="txtPassword2">Retype Password</label></th>
                     <td>
-                        <input type="password" id="txtPassword2" name="txtPassword2" required>
+                        <input type="password" id="txtPassword2" name="txtPassword2" required minlength="4">
                     </td>
                 </tr>
                 <tr>
                     <th><label for="txtRole">Role</label></th>
                     <td>
                         <select id="txtRole" name="txtRole">
-                            <option value="1"<?php echo $Role == "1" ? " selected" : ""; ?>>Admin</option>
-                            <option value="2"<?php echo $Role == "2" ? " selected" : ""; ?>>Operator</option>
-                            <option value="3"<?php echo $Role == "3" ? " selected" : ""; ?>>Member</option>
+                            <?php foreach ($roles as $row): ?>
+                                <option value="<?php echo (int) $row["roleID"]; ?>"<?php echo $Role == $row["roleID"] ? " selected" : ""; ?>>
+                                    <?php echo htmlspecialchars($row["roleName"]); ?>
+                                </option>
+                            <?php endforeach; ?>
                         </select>
                     </td>
                 </tr>
@@ -134,6 +162,7 @@ if (isset($_POST["btnSubmit"])) {
                     <th><label for="txtEmail">Email</label></th>
                     <td>
                         <input type="text" id="txtEmail" name="txtEmail" required
+                               pattern=".*@.*\..*" title="Must contain an @ and a period after the @"
                                value="<?php echo htmlspecialchars($Email); ?>">
                     </td>
                 </tr>
