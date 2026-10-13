@@ -1,0 +1,74 @@
+.login-form {
+    max-width: 420px;
+    margin: 0 auto;
+    border: 1px solid rgba(192, 132, 252, 0.35);
+    border-radius: 16px;
+    padding: 1.5rem;
+}
+
+.login-form h3 {
+    text-align: center;
+    margin-bottom: 1.25rem;
+}
+
+.login-form table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.25rem;
+}
+
+.login-form th,
+.login-form td {
+    border: 1px solid rgba(192, 132, 252, 0.35);
+    padding: 0.75rem;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.login-form th {
+    width: 35%;
+    white-space: nowrap;
+}
+
+.login-form input,
+.login-form select {
+    width: 100%;
+    padding: 0.55rem 0.7rem;
+    border: 1px solid #3b2a52;
+    border-radius: 8px;
+    background: #21182c;
+    color: #f3eef8;
+    font: inherit;
+}
+
+.login-form .actions {
+    text-align: center;
+}
+
+.login-form button,
+.login-form input[type="submit"] {
+    width: auto;
+    padding: 0.55rem 1.1rem;
+    border-radius: 999px;
+    border: 1px solid #c084fc;
+    background: #2c203b;
+    color: #ffffff;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.login-form .status {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #f9a8d4;
+}
+
+.page-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.admin-form {
+    max-width: 560px;
+}
