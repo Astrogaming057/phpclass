@@ -10,7 +10,7 @@ $Password2 = "";
 $Role = "";
 $Email = "";
 
-if (!isset($_SESSION["UID"])) {
+if (!isset($_SESSION["UID"]) || !isset($_SESSION["roleID"]) || $_SESSION["roleID"] != 1) {
     header("Location: index.php");
     exit;
 }

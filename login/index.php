@@ -7,28 +7,30 @@ $msg = '';
 if (!empty($_POST["txtEmail"])) {
     if (!empty($_POST["txtPassword"])) {
 
-        $Email = $_POST["txtEmail"];
-        $passwd = $_POST["txtPassword"];
+        $Email = trim($_POST["txtEmail"]);
+        $passwd = trim($_POST["txtPassword"]);
 
         try {
             include __DIR__ . '/../includes/db.php';
 
             $sql = mysqli_prepare($con, "Select memberPassword, memberKey, roleID, memberID from memberLogin where memberEmail = ?");
+            if ($sql === false) {
+                throw new Exception(mysqli_error($con));
+            }
+
             mysqli_stmt_bind_param($sql, "s", $Email);
             mysqli_stmt_execute($sql);
-            $result = mysqli_stmt_get_result($sql);
-            $row = mysqli_fetch_array($result);
+            mysqli_stmt_store_result($sql);
+            mysqli_stmt_bind_result($sql, $DBPass, $MemberKey, $roleID, $memberID);
 
-            if ($row != null) {
-                $DBPass = $row["memberPassword"];
-                $MemberKey = $row["memberKey"];
+            if (mysqli_stmt_fetch($sql)) {
                 $passwd = md5($passwd . $MemberKey);
 
                 if ($passwd == $DBPass) {
-                    $_SESSION["roleID"] = $row["roleID"];
-                    $_SESSION["UID"] = $row["memberID"];
+                    $_SESSION["roleID"] = $roleID;
+                    $_SESSION["UID"] = $memberID;
 
-                    if ($row["roleID"] == 1) {
+                    if ($roleID == 1) {
                         header("Location: admin.php");
                         exit;
                     } else {
@@ -41,6 +43,8 @@ if (!empty($_POST["txtEmail"])) {
             } else {
                 $msg = "Sorry Wrong Username or Password";
             }
+
+            mysqli_stmt_close($sql);
         } catch (Throwable $e) {
             $msg = $e->getMessage();
         }

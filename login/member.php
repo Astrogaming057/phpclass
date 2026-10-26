@@ -1,5 +1,12 @@
 <?php
+session_start();
+
 $currentPage = 'login';
+
+if (!isset($_SESSION["UID"])) {
+    header("Location: index.php");
+    exit;
+}
 ?>
 <!doctype html>
 <html lang="en">
