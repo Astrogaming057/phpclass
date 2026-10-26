@@ -76,13 +76,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = 'Password verification failed. Passwords do not match.';
     } else {
         try {
+            $customerKey = sprintf(
+                '%04X%04X-%04X-%04X-%04X-%04X%04X%04X',
+                mt_rand(0, 65535),
+                mt_rand(0, 65535),
+                mt_rand(0, 65535),
+                mt_rand(16384, 20479),
+                mt_rand(32768, 49151),
+                mt_rand(0, 65535),
+                mt_rand(0, 65535),
+                mt_rand(0, 65535)
+            );
+            $customerKey = md5($customerKey);
+            $hashedPassword = md5($password . $customerKey);
+
             $stmt = mysqli_prepare(
                 $con,
-                'UPDATE customers SET `first` = ?, `last` = ?, address = ?, city = ?, state = ?, zip = ?, phone = ?, email = ?, password = ? WHERE id = ?'
+                'UPDATE customers SET `first` = ?, `last` = ?, address = ?, city = ?, state = ?, zip = ?, phone = ?, email = ?, password = ?, customerKey = ? WHERE id = ?'
             );
             mysqli_stmt_bind_param(
                 $stmt,
-                'sssssssssi',
+                'ssssssssssi',
                 $fields['first'],
                 $fields['last'],
                 $fields['address'],
@@ -91,7 +105,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $fields['zip'],
                 $fields['phone'],
                 $fields['email'],
-                $password,
+                $hashedPassword,
+                $customerKey,
                 $customerID
             );
             mysqli_stmt_execute($stmt);
@@ -118,7 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         $stmt = mysqli_prepare(
             $con,
-            'SELECT id, `first`, `last`, address, city, state, zip, phone, email, password FROM customers WHERE id = ?'
+            'SELECT id, `first`, `last`, address, city, state, zip, phone, email FROM customers WHERE id = ?'
         );
         mysqli_stmt_bind_param($stmt, 'i', $customerID);
         mysqli_stmt_execute($stmt);
@@ -135,8 +150,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         foreach ($fields as $name => $unused) {
             $fields[$name] = $row[$name];
         }
-        $password = $row['password'];
-        $confirmPassword = $row['password'];
+        $password = '';
+        $confirmPassword = '';
     } catch (Throwable $e) {
         $error = $e->getMessage();
     }

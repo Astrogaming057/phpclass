@@ -66,14 +66,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         try {
             include __DIR__ . '/../includes/db.php';
 
+            $customerKey = sprintf(
+                '%04X%04X-%04X-%04X-%04X-%04X%04X%04X',
+                mt_rand(0, 65535),
+                mt_rand(0, 65535),
+                mt_rand(0, 65535),
+                mt_rand(16384, 20479),
+                mt_rand(32768, 49151),
+                mt_rand(0, 65535),
+                mt_rand(0, 65535),
+                mt_rand(0, 65535)
+            );
+            $customerKey = md5($customerKey);
+            $hashedPassword = md5($password . $customerKey);
+
             $stmt = mysqli_prepare(
                 $con,
-                'INSERT INTO customers (`first`, `last`, address, city, state, zip, phone, email, password)
-                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)'
+                'INSERT INTO customers (`first`, `last`, address, city, state, zip, phone, email, password, customerKey)
+                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
             );
             mysqli_stmt_bind_param(
                 $stmt,
-                'sssssssss',
+                'ssssssssss',
                 $fields['first'],
                 $fields['last'],
                 $fields['address'],
@@ -82,7 +96,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $fields['zip'],
                 $fields['phone'],
                 $fields['email'],
-                $password
+                $hashedPassword,
+                $customerKey
             );
             mysqli_stmt_execute($stmt);
             mysqli_stmt_close($stmt);
