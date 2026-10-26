@@ -4,23 +4,45 @@ session_start();
 $currentPage = 'login';
 $msg = '';
 
-if (!empty($_POST["txtUsername"])) {
+if (!empty($_POST["txtEmail"])) {
     if (!empty($_POST["txtPassword"])) {
 
-        $username = $_POST["txtUsername"];
+        $Email = $_POST["txtEmail"];
         $passwd = $_POST["txtPassword"];
 
-        if ($username == "admin" && $passwd == "p@ss") {
-            $_SESSION["UID"] = $username;
-            header("Location: admin.php");
-            exit;
-        } else {
-            if ($username == "member" && $passwd == "p@ss") {
-                header("Location: member.php");
-                exit;
-            }
+        try {
+            include __DIR__ . '/../includes/db.php';
 
-            $msg = "Sorry Wrong Username or Password";
+            $sql = mysqli_prepare($con, "Select memberPassword, memberKey, roleID, memberID from memberLogin where memberEmail = ?");
+            mysqli_stmt_bind_param($sql, "s", $Email);
+            mysqli_stmt_execute($sql);
+            $result = mysqli_stmt_get_result($sql);
+            $row = mysqli_fetch_array($result);
+
+            if ($row != null) {
+                $DBPass = $row["memberPassword"];
+                $MemberKey = $row["memberKey"];
+                $passwd = md5($passwd . $MemberKey);
+
+                if ($passwd == $DBPass) {
+                    $_SESSION["roleID"] = $row["roleID"];
+                    $_SESSION["UID"] = $row["memberID"];
+
+                    if ($row["roleID"] == 1) {
+                        header("Location: admin.php");
+                        exit;
+                    } else {
+                        header("Location: member.php");
+                        exit;
+                    }
+                } else {
+                    $msg = "Sorry Wrong Username or Password";
+                }
+            } else {
+                $msg = "Sorry Wrong Username or Password";
+            }
+        } catch (Throwable $e) {
+            $msg = $e->getMessage();
         }
 
     }
@@ -59,10 +81,10 @@ if (!empty($_POST["txtUsername"])) {
 
             <table>
                 <tr>
-                    <th><label for="txtUsername">Username</label></th>
+                    <th><label for="txtEmail">Email</label></th>
                     <td>
-                        <input type="text" id="txtUsername" name="txtUsername" required
-                               value="<?php echo htmlspecialchars($_POST['txtUsername'] ?? ''); ?>">
+                        <input type="text" id="txtEmail" name="txtEmail" required
+                               value="<?php echo htmlspecialchars($_POST['txtEmail'] ?? ''); ?>">
                     </td>
                 </tr>
                 <tr>

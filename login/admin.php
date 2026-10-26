@@ -71,11 +71,23 @@ if (isset($_POST["btnSubmit"])) {
 
     if ($err == "" && $dbError == "") {
 
-        $memberKey = "xxxxxxxxx";
+        $MemberKey = sprintf(
+            '%04X%04X-%04X-%04X-%04X-%04X%04X%04X',
+            mt_rand(0, 65535),
+            mt_rand(0, 65535),
+            mt_rand(0, 65535),
+            mt_rand(16384, 20479),
+            mt_rand(32768, 49151),
+            mt_rand(0, 65535),
+            mt_rand(0, 65535),
+            mt_rand(0, 65535)
+        );
+        $MemberKey = md5($MemberKey);
+        $hashedPassword = md5($Password . $MemberKey);
 
         try {
-            $sql = mysqli_prepare($con, "insert into memberLogin (memberName,memberEmail,memberPassword,roleID,memberKey) values (?,?,?,?,?)");
-            mysqli_stmt_bind_param($sql, "sssis", $Username, $Email, $Password, $Role, $memberKey);
+            $sql = mysqli_prepare($con, "insert into memberLogin (memberEmail,memberName,memberPassword,roleID,memberKey) values (?,?,?,?,?)");
+            mysqli_stmt_bind_param($sql, "sssis", $Email, $Username, $hashedPassword, $Role, $MemberKey);
             mysqli_stmt_execute($sql);
 
             $Username = "";
@@ -84,7 +96,11 @@ if (isset($_POST["btnSubmit"])) {
             $Email = "";
             $err = "Member Added To Database";
         } catch (Throwable $e) {
-            $err = $e->getMessage();
+            if (str_contains($e->getMessage(), "Duplicate")) {
+                $err = "Email already exists!";
+            } else {
+                $err = $e->getMessage();
+            }
         }
     }
 }
