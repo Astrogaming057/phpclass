@@ -28,7 +28,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand topnav brand-lockup" href="#">
-                <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+                <svg class="brand-mark" width="22" height="22" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
                     <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="2.5"/>
                     <path d="M8 24c4-10 8-14 12-14s6 8 12 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
                     <circle cx="28" cy="14" r="2.5" fill="currentColor"/>
@@ -53,7 +53,7 @@
             <div class="col-lg-12">
                 <div class="intro-message">
                     <p class="brand-hero">
-                        <svg class="brand-mark brand-mark--hero" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+                        <svg class="brand-mark brand-mark--hero" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
                             <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="2.5"/>
                             <path d="M8 24c4-10 8-14 12-14s6 8 12 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
                             <circle cx="28" cy="14" r="2.5" fill="currentColor"/>

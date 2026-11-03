@@ -90,16 +90,28 @@ h6 {
 }
 
 .brand-mark {
-    width: 1.35rem;
-    height: 1.35rem;
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    max-width: 22px;
+    max-height: 22px;
+    vertical-align: middle;
     color: var(--pace);
     flex-shrink: 0;
+    overflow: visible;
 }
 
 .brand-mark--hero {
-    width: 2.75rem;
-    height: 2.75rem;
+    width: 40px;
+    height: 40px;
+    max-width: 40px;
+    max-height: 40px;
     animation: markPulse 2.8s ease-in-out infinite;
+}
+
+.brand-hero .brand-mark {
+    /* keep mark from inheriting the huge brand font-size */
+    font-size: 0;
 }
 
 .lead {
