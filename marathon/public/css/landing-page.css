@@ -1,8 +1,23 @@
 /*
- * Start Bootstrap - Landing Page (http://startbootstrap.com/)
- * Copyright 2013-2016 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ * Run Master Software — landing page styles
+ * Based on Start Bootstrap Landing Page structure
  */
+
+:root {
+    --ink: #0e2433;
+    --ink-soft: #243b53;
+    --mist: #eef4f7;
+    --paper: #f7fafc;
+    --pace: #f45d01;
+    --pace-deep: #c94800;
+    --track: #1fa6a0;
+    --line: #d9e2ec;
+    --white: #ffffff;
+}
+
+html {
+    scroll-behavior: smooth;
+}
 
 body,
 html {
@@ -10,161 +25,366 @@ html {
     height: 100%;
 }
 
-body,
+body {
+    color: var(--ink-soft);
+    background:
+        radial-gradient(ellipse at top left, rgba(31, 166, 160, 0.12), transparent 42%),
+        radial-gradient(ellipse at bottom right, rgba(244, 93, 1, 0.08), transparent 40%),
+        var(--paper);
+    font-family: "Figtree", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+}
+
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: var(--ink);
+    font-family: "Syne", "Figtree", sans-serif;
     font-weight: 700;
+    letter-spacing: -0.02em;
 }
 
 .topnav {
-    font-size: 14px; 
+    font-size: 15px;
+}
+
+.navbar-default.topnav {
+    background: rgba(247, 250, 252, 0.92);
+    border: none;
+    border-bottom: 1px solid rgba(14, 36, 51, 0.06);
+    box-shadow: none;
+    backdrop-filter: blur(10px);
+}
+
+.navbar-default .navbar-brand,
+.navbar-default .navbar-nav > li > a {
+    color: var(--ink);
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: var(--pace);
+    background: transparent;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: var(--ink);
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: var(--ink);
+}
+
+.brand-lockup {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: "Syne", sans-serif;
+    font-size: 1.15rem !important;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+}
+
+.brand-mark {
+    width: 1.35rem;
+    height: 1.35rem;
+    color: var(--pace);
+    flex-shrink: 0;
+}
+
+.brand-mark--hero {
+    width: 2.75rem;
+    height: 2.75rem;
+    animation: markPulse 2.8s ease-in-out infinite;
 }
 
 .lead {
-    font-size: 18px;
+    font-size: 1.15rem;
     font-weight: 400;
+    line-height: 1.65;
+    color: var(--ink-soft);
 }
 
 .intro-header {
-    padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
-    padding-bottom: 50px;
-    text-align: center;
-    color: #f8f8f8;
+    position: relative;
+    min-height: 100vh;
+    padding-top: 70px;
+    padding-bottom: 0;
+    overflow: hidden;
+    color: var(--white);
+    text-align: left;
     background: url(../img/intro-bg.jpg) no-repeat center center;
     background-size: cover;
+    animation: heroDrift 28s ease-in-out infinite alternate;
+}
+
+.intro-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(105deg, rgba(14, 36, 51, 0.88) 0%, rgba(14, 36, 51, 0.55) 48%, rgba(14, 36, 51, 0.25) 100%),
+        linear-gradient(to top, rgba(14, 36, 51, 0.45), transparent 35%);
+    pointer-events: none;
+}
+
+.intro-header .container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    min-height: calc(100vh - 70px);
 }
 
 .intro-message {
     position: relative;
-    padding-top: 20%;
-    padding-bottom: 20%;
+    max-width: 38rem;
+    padding-top: 8vh;
+    padding-bottom: 12vh;
+    animation: fadeRise 1s ease-out both;
+}
+
+.brand-hero {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0 0 1.25rem;
+    color: var(--white);
+    font-family: "Syne", sans-serif;
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.04em;
 }
 
 .intro-message > h1 {
-    margin: 0;
-    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
-    font-size: 5em;
+    margin: 0 0 1rem;
+    color: var(--white);
+    font-size: clamp(1.6rem, 3.4vw, 2.35rem);
+    font-weight: 600;
+    line-height: 1.25;
+    text-shadow: none;
 }
 
-.intro-divider {
-    width: 400px;
-    border-top: 1px solid #f8f8f8;
-    border-bottom: 1px solid rgba(0,0,0,0.2);
-}
-
-.intro-message > h3 {
-    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
-}
-
-@media(max-width:767px) {
-    .intro-message {
-        padding-bottom: 15%;
-    }
-
-    .intro-message > h1 {
-        font-size: 3em;
-    }
-
-    ul.intro-social-buttons > li {
-        display: block;
-        margin-bottom: 20px;
-        padding: 0;
-    }
-
-    ul.intro-social-buttons > li:last-child {
-        margin-bottom: 0;
-    }
-
-    .intro-divider {
-        width: 100%;
-    }
-}
-
-.network-name {
-    text-transform: uppercase;
-    font-size: 14px;
+.intro-lead {
+    margin: 0 0 2rem;
+    max-width: 32rem;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 1.1rem;
     font-weight: 400;
-    letter-spacing: 2px;
+    line-height: 1.6;
+}
+
+.intro-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+}
+
+.btn-pace {
+    border: none;
+    border-radius: 4px;
+    background: var(--pace);
+    color: var(--white) !important;
+    font-family: "Figtree", sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.btn-pace:hover,
+.btn-pace:focus {
+    background: var(--pace-deep);
+    color: var(--white) !important;
+    transform: translateY(-2px);
+}
+
+.btn-ghost {
+    border: 1.5px solid rgba(255, 255, 255, 0.55) !important;
+    border-radius: 4px;
+    background: transparent !important;
+    color: var(--white) !important;
+    font-weight: 600;
+}
+
+.btn-ghost:hover,
+.btn-ghost:focus {
+    border-color: var(--white) !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: var(--white) !important;
+}
+
+.content-section-a,
+.content-section-b {
+    padding: 5.5rem 0;
+    border: none;
 }
 
 .content-section-a {
-    padding: 50px 0;
-    background-color: #f8f8f8;
+    background-color: transparent;
 }
 
 .content-section-b {
-    padding: 50px 0;
-    border-top: 1px solid #e7e7e7;
-    border-bottom: 1px solid #e7e7e7;
+    background-color: rgba(238, 244, 247, 0.75);
+}
+
+.feature-kicker {
+    margin: 0 0 0.75rem;
+    color: var(--track);
+    font-family: "Syne", sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
 }
 
 .section-heading {
-    margin-bottom: 30px;
+    margin-top: 0;
+    margin-bottom: 1.25rem;
+    font-size: clamp(1.75rem, 3vw, 2.35rem);
+    line-height: 1.15;
 }
 
-.section-heading-spacer {
-    float: left;
-    width: 200px;
-    border-top: 3px solid #e7e7e7;
+.feature-photo {
+    border-radius: 2px;
+    box-shadow: 0 18px 40px rgba(14, 36, 51, 0.12);
+    filter: saturate(1.05) contrast(1.02);
 }
 
 .banner {
-    padding: 100px 0;
-    color: #f8f8f8;
+    position: relative;
+    padding: 6.5rem 0;
+    overflow: hidden;
+    color: var(--white);
     background: url(../img/banner-bg.jpg) no-repeat center center;
     background-size: cover;
 }
 
-.banner h2 {
-    margin: 0;
-    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
-    font-size: 3em;
+.banner-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(14, 36, 51, 0.88), rgba(31, 166, 160, 0.55));
+    pointer-events: none;
 }
 
-.banner ul {
-    margin-bottom: 0;
+.banner .container {
+    position: relative;
+    z-index: 1;
 }
 
-.banner-social-buttons {
-    float: right;
-    margin-top: 0;
+.banner-copy h2 {
+    margin: 0 0 0.85rem;
+    color: var(--white);
+    font-size: clamp(1.85rem, 4vw, 2.75rem);
+    text-shadow: none;
 }
 
-@media(max-width:1199px) {
-    ul.banner-social-buttons {
-        float: left;
-        margin-top: 15px;
-    }
-}
-
-@media(max-width:767px) {
-    .banner h2 {
-        margin: 0;
-        text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
-        font-size: 3em;
-    }
-
-    ul.banner-social-buttons > li {
-        display: block;
-        margin-bottom: 20px;
-        padding: 0;
-    }
-
-    ul.banner-social-buttons > li:last-child {
-        margin-bottom: 0;
-    }
+.banner-copy p {
+    margin: 0 auto 1.75rem;
+    max-width: 34rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
 }
 
 footer {
-    padding: 50px 0;
-    background-color: #f8f8f8;
+    padding: 2.75rem 0;
+    background-color: var(--ink);
 }
 
-p.copyright {
-    margin: 15px 0 0;
+footer a {
+    color: rgba(255, 255, 255, 0.78);
+}
+
+footer a:hover {
+    color: var(--pace);
+    text-decoration: none;
+}
+
+footer .copyright {
+    color: rgba(255, 255, 255, 0.55) !important;
+}
+
+footer .copyright a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: underline;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes fadeRise {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heroDrift {
+    from {
+        background-position: 50% 40%;
+    }
+    to {
+        background-position: 50% 60%;
+    }
+}
+
+@keyframes markPulse {
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.06);
+        opacity: 0.85;
+    }
+}
+
+@media (max-width: 767px) {
+    .intro-header {
+        text-align: left;
+        animation: none;
+        background-position: center;
+    }
+
+    .intro-message {
+        padding-top: 12vh;
+        padding-bottom: 14vh;
+    }
+
+    .brand-hero {
+        font-size: 2.4rem;
+    }
+
+    .intro-actions .btn {
+        width: 100%;
+    }
+
+    .content-section-a,
+    .content-section-b {
+        padding: 3.5rem 0;
+    }
+
+    .feature-photo {
+        margin-top: 1.75rem;
+    }
+
+    .banner {
+        padding: 4.5rem 0;
+    }
 }

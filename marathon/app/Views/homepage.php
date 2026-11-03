@@ -2,40 +2,24 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Run Master Software — race-day management with open APIs, plug-and-play interfaces, and cost-effective tools for organizers.">
+    <meta name="author" content="Run Master Software">
 
-    <title>Landing Page - Start Bootstrap Theme</title>
+    <title>Run Master Software</title>
 
-    <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
     <link href="css/landing-page.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<!-- Navigation -->
 <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
     <div class="container topnav">
-        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>
@@ -43,191 +27,163 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand topnav" href="#">Start Bootstrap</a>
+            <a class="navbar-brand topnav brand-lockup" href="#">
+                <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+                    <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="2.5"/>
+                    <path d="M8 24c4-10 8-14 12-14s6 8 12 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                    <circle cx="28" cy="14" r="2.5" fill="currentColor"/>
+                </svg>
+                <span>Run Master</span>
+            </a>
         </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="#about">About</a>
-                </li>
-                <li>
-                    <a href="#services">Services</a>
-                </li>
-                <li>
-                    <a href="#contact">Contact</a>
-                </li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#apis">APIs</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
-        <!-- /.navbar-collapse -->
     </div>
-    <!-- /.container -->
 </nav>
 
-
-<!-- Header -->
-<a name="about"></a>
-<div class="intro-header">
+<header class="intro-header" id="about">
+    <div class="intro-overlay"></div>
     <div class="container">
-
         <div class="row">
             <div class="col-lg-12">
                 <div class="intro-message">
-                    <h1>Landing Page</h1>
-                    <h3>A Template by Start Bootstrap</h3>
-                    <hr class="intro-divider">
-                    <ul class="list-inline intro-social-buttons">
-                        <li>
-                            <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
-                        </li>
-                        <li>
-                            <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
-                        </li>
-                        <li>
-                            <a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
-                        </li>
-                    </ul>
+                    <p class="brand-hero">
+                        <svg class="brand-mark brand-mark--hero" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+                            <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="2.5"/>
+                            <path d="M8 24c4-10 8-14 12-14s6 8 12 14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                            <circle cx="28" cy="14" r="2.5" fill="currentColor"/>
+                        </svg>
+                        Run Master
+                    </p>
+                    <h1>Software that finishes every race with you</h1>
+                    <p class="intro-lead">Manage events, open your data to developers, and drop race tools straight onto your site — without burning the budget.</p>
+                    <div class="intro-actions">
+                        <a href="#features" class="btn btn-primary btn-lg btn-pace">Explore features</a>
+                        <a href="#contact" class="btn btn-default btn-lg btn-ghost">Talk to us</a>
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
-    <!-- /.container -->
+</header>
 
-</div>
-<!-- /.intro-header -->
-
-<!-- Page Content -->
-
-<a  name="services"></a>
-<div class="content-section-a">
-
+<section class="content-section-a reveal" id="features">
     <div class="container">
         <div class="row">
             <div class="col-lg-5 col-sm-6">
-                <hr class="section-heading-spacer">
-                <div class="clearfix"></div>
-                <h2 class="section-heading">Death to the Stock Photo:<br>Special Thanks</h2>
-                <p class="lead">A special thanks to <a target="_blank" href="http://join.deathtothestockphoto.com/">Death to the Stock Photo</a> for providing the photographs that you see in this template. Visit their website to become a member.</p>
+                <p class="feature-kicker">01 — Management</p>
+                <h2 class="section-heading">Quick and easy software management</h2>
+                <p class="lead">Stand up registrations, timing boards, and volunteer checklists from one calm dashboard. Less admin, more race day.</p>
             </div>
             <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                <img class="img-responsive" src="img/ipad.png" alt="">
+                <img class="img-responsive feature-photo" src="img/feature-manage.jpg" alt="Runner racing along a scenic road">
             </div>
         </div>
-
     </div>
-    <!-- /.container -->
+</section>
 
-</div>
-<!-- /.content-section-a -->
-
-<div class="content-section-b">
-
+<section class="content-section-b reveal" id="apis">
     <div class="container">
-
         <div class="row">
-            <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
-                <hr class="section-heading-spacer">
-                <div class="clearfix"></div>
-                <h2 class="section-heading">3D Device Mockups<br>by PSDCovers</h2>
-                <p class="lead">Turn your 2D designs into high quality, 3D product shots in seconds using free Photoshop actions by <a target="_blank" href="http://www.psdcovers.com/">PSDCovers</a>! Visit their website to download some of their awesome, free photoshop actions!</p>
+            <div class="col-lg-5 col-lg-offset-1 col-sm-push-6 col-sm-6">
+                <p class="feature-kicker">02 — Developers</p>
+                <h2 class="section-heading">Open APIs for developers</h2>
+                <p class="lead">Connect leaderboards, CRM tools, and custom race apps with documented REST endpoints built for speed and reliability.</p>
             </div>
-            <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-                <img class="img-responsive" src="img/dog.png" alt="">
+            <div class="col-lg-5 col-sm-pull-6 col-sm-6">
+                <img class="img-responsive feature-photo" src="img/feature-api.jpg" alt="Marathon runners moving through a city course">
             </div>
         </div>
-
     </div>
-    <!-- /.container -->
+</section>
 
-</div>
-<!-- /.content-section-b -->
-
-<div class="content-section-a">
-
+<section class="content-section-a reveal">
     <div class="container">
-
         <div class="row">
             <div class="col-lg-5 col-sm-6">
-                <hr class="section-heading-spacer">
-                <div class="clearfix"></div>
-                <h2 class="section-heading">Google Web Fonts and<br>Font Awesome Icons</h2>
-                <p class="lead">This template features the 'Lato' font, part of the <a target="_blank" href="http://www.google.com/fonts">Google Web Font library</a>, as well as <a target="_blank" href="http://fontawesome.io">icons from Font Awesome</a>.</p>
+                <p class="feature-kicker">03 — Integration</p>
+                <h2 class="section-heading">Plug and play with your site</h2>
+                <p class="lead">Embed registration, live results, and athlete lookups with a few lines of code. Your brand stays front and center.</p>
             </div>
             <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                <img class="img-responsive" src="img/phones.png" alt="">
+                <img class="img-responsive feature-photo" src="img/feature-plug.jpg" alt="Group of runners training on a track">
             </div>
         </div>
-
     </div>
-    <!-- /.container -->
+</section>
 
-</div>
-<!-- /.content-section-a -->
-
-<a  name="contact"></a>
-<div class="banner">
-
+<section class="content-section-b reveal">
     <div class="container">
-
         <div class="row">
-            <div class="col-lg-6">
-                <h2>Connect to Start Bootstrap:</h2>
+            <div class="col-lg-5 col-lg-offset-1 col-sm-push-6 col-sm-6">
+                <p class="feature-kicker">04 — Value</p>
+                <h2 class="section-heading">Cost effective from mile one</h2>
+                <p class="lead">Scale from local 5Ks to city marathons with pricing that respects nonprofits, clubs, and growing race series.</p>
             </div>
-            <div class="col-lg-6">
-                <ul class="list-inline banner-social-buttons">
-                    <li>
-                        <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
-                    </li>
-                    <li>
-                        <a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
-                    </li>
-                </ul>
+            <div class="col-lg-5 col-sm-pull-6 col-sm-6">
+                <img class="img-responsive feature-photo" src="img/feature-cost.jpg" alt="Running shoes ready for race day">
             </div>
         </div>
-
     </div>
-    <!-- /.container -->
+</section>
 
-</div>
-<!-- /.banner -->
+<section class="banner" id="contact">
+    <div class="banner-overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center banner-copy">
+                <h2>Ready to put Run Master on your course?</h2>
+                <p>Tell us about your next event and we will help you line up the right tools.</p>
+                <a href="mailto:hello@runmaster.software" class="btn btn-primary btn-lg btn-pace">hello@runmaster.software</a>
+            </div>
+        </div>
+    </div>
+</section>
 
-<!-- Footer -->
 <footer>
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <ul class="list-inline">
-                    <li>
-                        <a href="#">Home</a>
-                    </li>
+                    <li><a href="#">Home</a></li>
                     <li class="footer-menu-divider">&sdot;</li>
-                    <li>
-                        <a href="#about">About</a>
-                    </li>
+                    <li><a href="#features">Features</a></li>
                     <li class="footer-menu-divider">&sdot;</li>
-                    <li>
-                        <a href="#services">Services</a>
-                    </li>
+                    <li><a href="#apis">APIs</a></li>
                     <li class="footer-menu-divider">&sdot;</li>
-                    <li>
-                        <a href="#contact">Contact</a>
-                    </li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
-                <p class="copyright text-muted small">Copyright &copy; Your Company 2014. All Rights Reserved</p>
+                <p class="copyright text-muted small">Copyright &copy; Run Master Software <?= date('Y') ?>. All Rights Reserved. Photos via <a href="https://unsplash.com/s/photos/marathon" target="_blank" rel="noopener">Unsplash</a>.</p>
             </div>
         </div>
     </div>
 </footer>
 
-<!-- jQuery -->
 <script src="js/jquery.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
+<script>
+(function () {
+    var nodes = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+        nodes.forEach(function (n) { n.classList.add('is-visible'); });
+        return;
+    }
+    var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.18 });
+    nodes.forEach(function (n) { observer.observe(n); });
+})();
+</script>
 
 </body>
 
