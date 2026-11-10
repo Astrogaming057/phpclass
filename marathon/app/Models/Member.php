@@ -18,7 +18,7 @@ class Member extends Model
             $MemberKey = $row->memberKey;
             $passwd = md5($passwd . $MemberKey);
 
-            if ($passwd == $DBPass) {
+            if ($passwd == $DBPass && (int) $row->roleID === 4) {
                 return true;
             }
 
@@ -28,7 +28,7 @@ class Member extends Model
         return false;
     }
 
-    public function create_member($username, $password, $email, $roleID = 2)
+    public function create_member($username, $password, $email, $roleID = 4)
     {
         $memberKey = sprintf(
             '%04X%04X-%04X-%04X-%04X-%04X%04X%04X',
