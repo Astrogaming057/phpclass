@@ -6,27 +6,23 @@ use CodeIgniter\Model;
 
 class Member extends Model
 {
-    public function user_login($email, $password)
+    public function user_login($email, $passwd)
     {
         $db = db_connect();
         $sql = 'Select memberPassword, memberKey, roleID, memberID from memberLogin where memberEmail = ?';
         $query = $db->query($sql, [$email]);
         $row = $query->getFirstRow();
 
-        if ($row == null) {
+        if ($row != null) {
+            $DBPass = $row->memberPassword;
+            $MemberKey = $row->memberKey;
+            $passwd = md5($passwd . $MemberKey);
+
+            if ($passwd == $DBPass) {
+                return true;
+            }
+
             return false;
-        }
-
-        $hashed = md5($password . $row->memberKey);
-
-        if ($hashed == $row->memberPassword) {
-            $session = session();
-            $session->set([
-                'UID'    => $row->memberID,
-                'roleID' => $row->roleID,
-            ]);
-
-            return true;
         }
 
         return false;
