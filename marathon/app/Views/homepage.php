@@ -10,9 +10,10 @@
 
     <title>Run Master Software</title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/landing-page.css" rel="stylesheet">
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <base href="<?= base_url() ?>">
+    <link href="<?= base_url('css/bootstrap.min.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('css/landing-page.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('font-awesome/css/font-awesome.min.css') ?>" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
 </head>
 
@@ -41,6 +42,7 @@
                 <li><a href="#features">Features</a></li>
                 <li><a href="#apis">APIs</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="#login">Login</a></li>
             </ul>
         </div>
     </div>
@@ -81,7 +83,7 @@
                 <p class="lead">Stand up registrations, timing boards, and volunteer checklists from one calm dashboard. Less admin, more race day.</p>
             </div>
             <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                <img class="img-responsive feature-photo" src="img/feature-manage.jpg" alt="Runner racing along a scenic road">
+                <img class="img-responsive feature-photo" src="<?= base_url('img/feature-manage.jpg') ?>" alt="Runner racing along a scenic road">
             </div>
         </div>
     </div>
@@ -96,7 +98,7 @@
                 <p class="lead">Connect leaderboards, CRM tools, and custom race apps with documented REST endpoints built for speed and reliability.</p>
             </div>
             <div class="col-lg-5 col-sm-pull-6 col-sm-6">
-                <img class="img-responsive feature-photo" src="img/feature-api.jpg" alt="Marathon runners moving through a city course">
+                <img class="img-responsive feature-photo" src="<?= base_url('img/feature-api.jpg') ?>" alt="Marathon runners moving through a city course">
             </div>
         </div>
     </div>
@@ -111,7 +113,7 @@
                 <p class="lead">Embed registration, live results, and athlete lookups with a few lines of code. Your brand stays front and center.</p>
             </div>
             <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                <img class="img-responsive feature-photo" src="img/feature-plug.jpg" alt="Group of runners training on a track">
+                <img class="img-responsive feature-photo" src="<?= base_url('img/feature-plug.jpg') ?>" alt="Group of runners training on a track">
             </div>
         </div>
     </div>
@@ -126,7 +128,74 @@
                 <p class="lead">Scale from local 5Ks to city marathons with pricing that respects nonprofits, clubs, and growing race series.</p>
             </div>
             <div class="col-lg-5 col-sm-pull-6 col-sm-6">
-                <img class="img-responsive feature-photo" src="img/feature-cost.jpg" alt="Running shoes ready for race day">
+                <img class="img-responsive feature-photo" src="<?= base_url('img/feature-cost.jpg') ?>" alt="Running shoes ready for race day">
+            </div>
+        </div>
+    </div>
+</section>
+
+<a name="login"></a>
+<section class="content-section-a reveal auth-section" id="login">
+    <div class="container">
+        <?php if (! empty($load_error) && $load_error === 'true'): ?>
+        <div class="row">
+            <div class="col-sm-12 alert alert-danger">
+                <?php if (! empty($error_message)): ?>
+                    <?= esc($error_message) ?>
+                <?php else: ?>
+                    <?= validation_list_errors() ?>
+                <?php endif; ?>
+            </div>
+        </div>
+        <?php endif; ?>
+        <div class="row">
+            <div class="col-lg-5 col-sm-6">
+                <p class="feature-kicker">Account</p>
+                <h2 class="section-heading">Login</h2>
+                <?php
+                echo form_open(site_url('login'));
+                echo form_input([
+                    'name'        => 'username',
+                    'id'          => 'login_username',
+                    'class'       => 'form-control',
+                    'placeholder' => 'Email',
+                    'value'       => set_value('username'),
+                    'type'        => 'email',
+                ]);
+                echo form_password([
+                    'name'        => 'password',
+                    'id'          => 'login_password',
+                    'class'       => 'form-control',
+                    'placeholder' => 'Password',
+                    'value'       => '',
+                ]);
+                echo form_submit('submit', 'Login', ['class' => 'btn btn-default btn-auth']);
+                echo form_close();
+                ?>
+            </div>
+            <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                <p class="feature-kicker">New here</p>
+                <h2 class="section-heading">Create Account</h2>
+                <?php
+                echo form_open(site_url('create'));
+                echo form_input([
+                    'name'        => 'username',
+                    'id'          => 'create_username',
+                    'class'       => 'form-control',
+                    'placeholder' => 'Email',
+                    'value'       => set_value('username'),
+                    'type'        => 'email',
+                ]);
+                echo form_password([
+                    'name'        => 'password',
+                    'id'          => 'create_password',
+                    'class'       => 'form-control',
+                    'placeholder' => 'Password',
+                    'value'       => '',
+                ]);
+                echo form_submit('submit', 'Create Account', ['class' => 'btn btn-default btn-auth']);
+                echo form_close();
+                ?>
             </div>
         </div>
     </div>
@@ -156,6 +225,8 @@
                     <li class="footer-menu-divider">&sdot;</li>
                     <li><a href="#apis">APIs</a></li>
                     <li class="footer-menu-divider">&sdot;</li>
+                    <li><a href="#login">Login</a></li>
+                    <li class="footer-menu-divider">&sdot;</li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <p class="copyright text-muted small">Copyright &copy; Run Master Software <?= date('Y') ?>. All Rights Reserved. Photos via <a href="https://unsplash.com/s/photos/marathon" target="_blank" rel="noopener">Unsplash</a>.</p>
@@ -164,8 +235,8 @@
     </div>
 </footer>
 
-<script src="js/jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="<?= base_url('js/jquery.js') ?>"></script>
+<script src="<?= base_url('js/bootstrap.min.js') ?>"></script>
 <script>
 (function () {
     var nodes = document.querySelectorAll('.reveal');
