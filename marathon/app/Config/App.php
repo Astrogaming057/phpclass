@@ -16,7 +16,7 @@ class App extends BaseConfig
      *
      * E.g., http://example.com/
      */
-    public string $baseURL = 'http://localhost:8080/';
+    public string $baseURL = 'http://10.7.66.150/marathon/public/';
 
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.
@@ -29,7 +29,22 @@ class App extends BaseConfig
      *
      * @var list<string>
      */
-    public array $allowedHostnames = [];
+    public array $allowedHostnames = ['127.0.0.1', 'localhost', '10.7.66.150'];
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        // Match whatever host you're actually on (school server or local preview).
+        $host = $_SERVER['HTTP_HOST'] ?? '';
+        if ($host !== '') {
+            $https  = ! empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off';
+            $scheme = $https ? 'https' : 'http';
+            $script = str_replace('\\', '/', $_SERVER['SCRIPT_NAME'] ?? '/index.php');
+            $basePath = rtrim(str_replace('\\', '/', dirname($script)), '/');
+            $this->baseURL = $scheme . '://' . $host . ($basePath === '' ? '' : $basePath) . '/';
+        }
+    }
 
     /**
      * --------------------------------------------------------------------------
