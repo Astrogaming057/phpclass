@@ -36,8 +36,7 @@ class Home extends BaseController
         $Member = new Member();
         if ($Member->user_login($this->request->getPost('username'), $this->request->getPost('password'))) {
             // Pass
-            echo 'Pass';
-            exit;
+            return view('admin_page');
         }
 
         // Fail
