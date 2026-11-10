@@ -71,8 +71,11 @@ class Home extends BaseController
         );
 
         if ($result === true) {
-            echo 'Account created';
-            exit;
+            $Member->user_login(
+                $this->request->getPost('email'),
+                $this->request->getPost('password')
+            );
+            return view('admin_page');
         }
 
         $data = [
