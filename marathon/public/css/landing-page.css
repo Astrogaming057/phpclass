@@ -319,16 +319,17 @@ h6 {
 .auth-section .form-control {
     height: 44px;
     margin-bottom: 0.85rem;
-    border: 1px solid var(--line);
-    border-radius: 4px;
+    border: 1px solid #4a4a4a;
+    border-radius: 2px;
     box-shadow: none;
     color: var(--ink);
     font-size: 1rem;
+    background: #fff;
 }
 
 .auth-section .form-control:focus {
-    border-color: var(--track);
-    box-shadow: 0 0 0 3px rgba(31, 166, 160, 0.18);
+    border-color: #222;
+    box-shadow: none;
 }
 
 .auth-section .btn-auth {
@@ -344,6 +345,38 @@ h6 {
 .auth-section .btn-auth:focus {
     background: var(--pace-deep);
     color: var(--white);
+}
+
+.create-panel {
+    max-width: 320px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.create-heading {
+    margin-bottom: 1.5rem !important;
+    text-align: center;
+}
+
+.create-form .form-control {
+    margin-bottom: 1rem;
+}
+
+.create-form .btn-create {
+    display: inline-block;
+    margin-top: 0.35rem;
+    padding: 0.45rem 0.9rem;
+    border: 1px solid #4a4a4a;
+    border-radius: 2px;
+    background: #d8d8d8;
+    color: #222;
+    font-weight: 600;
+}
+
+.create-form .btn-create:hover,
+.create-form .btn-create:focus {
+    background: #c8c8c8;
+    color: #111;
 }
 
 footer {

@@ -13,12 +13,56 @@ class Member extends Model
         $query = $db->query($sql, [$email]);
         $row = $query->getFirstRow();
 
-        if ($row != null) {
-            echo $row->memberKey;
-        } else {
+        if ($row == null) {
             return false;
         }
 
-        return true;
+        $hashed = md5($password . $row->memberKey);
+
+        if ($hashed == $row->memberPassword) {
+            $session = session();
+            $session->set([
+                'UID'    => $row->memberID,
+                'roleID' => $row->roleID,
+            ]);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public function create_member($username, $password, $email, $roleID = 2)
+    {
+        $memberKey = sprintf(
+            '%04X%04X-%04X-%04X-%04X-%04X%04X%04X',
+            mt_rand(0, 65535),
+            mt_rand(0, 65535),
+            mt_rand(0, 65535),
+            mt_rand(16384, 20479),
+            mt_rand(32768, 49151),
+            mt_rand(0, 65535),
+            mt_rand(0, 65535),
+            mt_rand(0, 65535)
+        );
+        $memberKey = md5($memberKey);
+        $hashedPassword = md5($password . $memberKey);
+
+        $db = db_connect();
+
+        try {
+            $db->query(
+                'INSERT INTO memberLogin (memberEmail, memberName, memberPassword, roleID, memberKey) VALUES (?, ?, ?, ?, ?)',
+                [$email, $username, $hashedPassword, $roleID, $memberKey]
+            );
+
+            return true;
+        } catch (\Throwable $e) {
+            if (str_contains($e->getMessage(), 'Duplicate')) {
+                return 'Email already exists!';
+            }
+
+            return $e->getMessage();
+        }
     }
 }

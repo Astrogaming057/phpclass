@@ -174,28 +174,43 @@
                 ?>
             </div>
             <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                <p class="feature-kicker">New here</p>
-                <h2 class="section-heading">Create Account</h2>
-                <?php
-                echo form_open(site_url('create'));
-                echo form_input([
-                    'name'        => 'username',
-                    'id'          => 'create_username',
-                    'class'       => 'form-control',
-                    'placeholder' => 'Email',
-                    'value'       => set_value('username'),
-                    'type'        => 'email',
-                ]);
-                echo form_password([
-                    'name'        => 'password',
-                    'id'          => 'create_password',
-                    'class'       => 'form-control',
-                    'placeholder' => 'Password',
-                    'value'       => '',
-                ]);
-                echo form_submit('submit', 'Create Account', ['class' => 'btn btn-default btn-auth']);
-                echo form_close();
-                ?>
+                <div class="create-panel">
+                    <h2 class="section-heading create-heading">Create Account</h2>
+                    <?php
+                    echo form_open(site_url('create'), ['class' => 'create-form']);
+                    echo form_input([
+                        'name'        => 'username',
+                        'id'          => 'create_username',
+                        'class'       => 'form-control',
+                        'placeholder' => 'Enter Username',
+                        'value'       => set_value('username'),
+                    ]);
+                    echo form_password([
+                        'name'        => 'password',
+                        'id'          => 'create_password',
+                        'class'       => 'form-control',
+                        'placeholder' => 'Enter Password',
+                        'value'       => '',
+                    ]);
+                    echo form_password([
+                        'name'        => 'password2',
+                        'id'          => 'create_password2',
+                        'class'       => 'form-control',
+                        'placeholder' => 'Retype Password',
+                        'value'       => '',
+                    ]);
+                    echo form_input([
+                        'name'        => 'email',
+                        'id'          => 'create_email',
+                        'class'       => 'form-control',
+                        'placeholder' => 'Enter Email',
+                        'value'       => set_value('email'),
+                        'type'        => 'email',
+                    ]);
+                    echo form_submit('submit', 'Create Account', ['class' => 'btn btn-default btn-create']);
+                    echo form_close();
+                    ?>
+                </div>
             </div>
         </div>
     </div>
