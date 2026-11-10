@@ -32,14 +32,12 @@ class Home extends BaseController
             return view('homepage', $data);
         }
 
-        // Hit the DB
         $Member = new Member();
         if ($Member->user_login($this->request->getPost('username'), $this->request->getPost('password'))) {
-            // Pass
+
             return view('admin_page');
         }
 
-        // Fail
         $data = [
             'load_error'    => 'true',
             'error_message' => 'Invalid username or Password',
