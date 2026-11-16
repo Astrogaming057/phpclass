@@ -10,4 +10,21 @@ class Admin extends BaseController
     {
         return view('admin_page');
     }
+
+    public function manage_marathon(): string
+    {
+        return view('marathon_page');
+    }
+    public function add_marathon(): string
+    {
+        return view('add_page');
+    }
+    public function manage_runners(): string
+    {
+        return view('runners_page');
+    }
+    public function registration_fourm(): string
+    {
+        return view('registration_page');
+    }
 }
