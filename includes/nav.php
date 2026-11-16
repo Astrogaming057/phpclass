@@ -6,3 +6,4 @@
 <a class="nav-link<?php echo (!empty($currentPage) && $currentPage === 'movielist') ? ' is-active' : ''; ?>" href="/movielist/">Movie List</a>
 <a class="nav-link<?php echo (!empty($currentPage) && $currentPage === 'customers') ? ' is-active' : ''; ?>" href="/customers/">Customers</a>
 <a class="nav-link<?php echo (!empty($currentPage) && $currentPage === 'login') ? ' is-active' : ''; ?>" href="/login/">Admin Login</a>
+<a class="nav-link<?php echo (!empty($currentPage) && $currentPage === 'login') ? ' is-active' : ''; ?>" href="/marathon/public" target="_blank">Marathon Website</a>
