@@ -51,35 +51,35 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Add Marathon
+                            Add New Race
                         </h1>
                     </div>
                 </div>
                 <!-- /.row -->
 
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
 
                         <form role="form">
 
                             <div class="form-group">
-                                <label>Name</label>
-                                <input class="form-control" name="name" placeholder="Marathon name">
+                                <label>Race Name</label>
+                                <input class="form-control" name="name">
                             </div>
 
                             <div class="form-group">
-                                <label>Locations</label>
-                                <input class="form-control" name="locations" placeholder="Race locations">
+                                <label>Race Location</label>
+                                <input class="form-control" name="location">
                             </div>
 
                             <div class="form-group">
-                                <label>Description</label>
-                                <textarea class="form-control" name="description" rows="3" placeholder="Marathon description"></textarea>
+                                <label>Race Description</label>
+                                <textarea class="form-control" name="description" rows="4"></textarea>
                             </div>
 
                             <div class="form-group">
-                                <label>Race Date/Time</label>
-                                <input class="form-control" type="datetime-local" name="race_datetime">
+                                <label>Race Date</label>
+                                <input class="form-control" type="text" name="race_date">
                             </div>
 
                             <button type="submit" class="btn btn-default">Submit Button</button>

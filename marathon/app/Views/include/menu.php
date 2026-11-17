@@ -5,7 +5,7 @@
                         <a href="admin"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li <?php if (! empty($marathon_page) && $marathon_page === 'true'): ?>class="active"<?php endif; ?>>
-                        <a href="marathon"><i class="fa fa-fw fa-bar-chart-o"></i> Manage Marathon</a>
+                        <a href="marathon"><i class="fa fa-fw fa-bar-chart-o"></i> Manage Marathons</a>
                     </li>
                     <li <?php if (! empty($add_page) && $add_page === 'true'): ?>class="active"<?php endif; ?>>
                         <a href="add"><i class="fa fa-fw fa-table"></i> Add Marathon</a>

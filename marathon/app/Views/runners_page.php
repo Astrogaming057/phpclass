@@ -51,75 +51,40 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Tables
+                            Manage Runners
                         </h1>
-                        <ol class="breadcrumb">
-                            <li>
-                                <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
-                            </li>
-                            <li class="active">
-                                <i class="fa fa-table"></i> Tables
-                            </li>
-                        </ol>
                     </div>
                 </div>
                 <!-- /.row -->
 
                 <div class="row">
-                    <div class="col-lg-6">
-                        <h2>Contextual Classes</h2>
+                    <div class="col-lg-4 col-lg-offset-8">
+                        <div class="form-group">
+                            <label>Select Race</label>
+                            <select class="form-control">
+                                <option>Joe's Haunted 5K</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2>Manage Runners</h2>
                         <div class="table-responsive">
-                            <table class="table table-bordered table-hover table-striped">
+                            <table class="table table-bordered table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Page</th>
-                                        <th>Visits</th>
-                                        <th>% New Visits</th>
-                                        <th>Revenue</th>
+                                        <th>Runner Name</th>
+                                        <th>Placement</th>
+                                        <th>Time</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="active">
-                                        <td>/index.html</td>
-                                        <td>1265</td>
-                                        <td>32.3%</td>
-                                        <td>$321.33</td>
-                                    </tr>
-                                    <tr class="success">
-                                        <td>/about.html</td>
-                                        <td>261</td>
-                                        <td>33.3%</td>
-                                        <td>$234.12</td>
-                                    </tr>
-                                    <tr class="warning">
-                                        <td>/sales.html</td>
-                                        <td>665</td>
-                                        <td>21.3%</td>
-                                        <td>$16.34</td>
-                                    </tr>
-                                    <tr class="danger">
-                                        <td>/blog.html</td>
-                                        <td>9516</td>
-                                        <td>89.3%</td>
-                                        <td>$1644.43</td>
-                                    </tr>
                                     <tr>
-                                        <td>/404.html</td>
-                                        <td>23</td>
-                                        <td>34.3%</td>
-                                        <td>$23.52</td>
-                                    </tr>
-                                    <tr>
-                                        <td>/services.html</td>
-                                        <td>421</td>
-                                        <td>60.3%</td>
-                                        <td>$724.32</td>
-                                    </tr>
-                                    <tr>
-                                        <td>/blog/post.html</td>
-                                        <td>1233</td>
-                                        <td>93.2%</td>
-                                        <td>$126.34</td>
+                                        <td>John Doe</td>
+                                        <td>1st Place</td>
+                                        <td>46.32 minutes</td>
                                     </tr>
                                 </tbody>
                             </table>
