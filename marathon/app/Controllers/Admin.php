@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\Race;
+
 class Admin extends BaseController
 {
     protected $helpers = ['url'];
@@ -14,7 +16,10 @@ class Admin extends BaseController
 
     public function manage_marathon(): string
     {
-        $data = array('marathon_page' => 'true');
+        $raceModel = new Race();
+        $races = $raceModel->get_races();
+        $data['races'] = $races;
+        $data['marathon_page'] = 'true';
         return view('marathon_page', $data);
     }
     public function add_marathon(): string

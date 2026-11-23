@@ -70,12 +70,15 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Joe's Haunted 5K</td>
-                                        <td>Appleton, WI</td>
-                                        <td>October 31st</td>
-                                        <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
-                                    </tr>
+
+
+                                <?php foreach ($races as $race) : ?>
+                                    <td><?php echo $race['name']; ?></td>
+                                    <td><?php echo $race['location']; ?></td>
+                                    <td><?php $t = strtotime($race['date']); echo date('m/d/Y H:i', $t); ?></td>
+                                    <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
+                                <?php endforeach; ?>
+
                                 </tbody>
                             </table>
                         </div>
