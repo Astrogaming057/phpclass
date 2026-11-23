@@ -40,13 +40,12 @@ class Admin extends BaseController
 
 
 
-    public function add_race(): string
+    public function add_race()
     {
-        $data = array('add_page' => 'true');
         $raceModel = new Race();
         $raceDate = str_replace('T', ' ', $_POST['race_date']);
         $raceModel->add_race($_POST['race_name'], $raceDate, $_POST['race_location'], $_POST['race_description']);
-        return view('add_page', $data);
+        return redirect()->to(base_url('marathon'));
     }
 
     public function edit_marathon(): string
@@ -63,14 +62,12 @@ class Admin extends BaseController
         return view('edit_page', $data);
     }
 
-    public function update_race(): string
+    public function update_race()
     {
         $raceModel = new Race();
         $raceDate = str_replace('T', ' ', $_POST['race_date']);
         $raceModel->update_race($_POST['race_id'], $_POST['race_name'], $raceDate, $_POST['race_location'], $_POST['race_description']);
-        $data['race'] = $raceModel->get_race($_POST['race_id']);
-        $data['marathon_page'] = 'true';
-        return view('edit_page', $data);
+        return redirect()->to(base_url('marathon'));
     }
 
     public function delete_race(): string
