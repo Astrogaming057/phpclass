@@ -77,7 +77,7 @@
                                         <td><?php echo $race['raceName']; ?></td>
                                         <td><?php echo $race['raceLocation']; ?></td>
                                         <td><?php $t = strtotime($race['raceDateTime']); echo date('m/d/Y H:i', $t); ?></td>
-                                        <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
+                                        <td><a href="<?php echo base_url('edit'); ?>?id=<?php echo $race['raceID']; ?>">Edit</a> | <a href="<?php echo base_url('delete_race'); ?>?id=<?php echo $race['raceID']; ?>">Delete</a></td>
                                     </tr>
                                 <?php endforeach; ?>
 

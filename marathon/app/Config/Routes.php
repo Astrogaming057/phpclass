@@ -25,3 +25,6 @@ $routes->match(['get', 'post'], '/create', 'Home::create');
 
 
 $routes->post('/add_race', 'Admin::add_race');
+$routes->get('/edit', 'Admin::edit_marathon');
+$routes->post('/update_race', 'Admin::update_race');
+$routes->get('/delete_race', 'Admin::delete_race');
