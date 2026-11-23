@@ -73,10 +73,12 @@
 
 
                                 <?php foreach ($races as $race) : ?>
-                                    <td><?php echo $race['name']; ?></td>
-                                    <td><?php echo $race['location']; ?></td>
-                                    <td><?php $t = strtotime($race['date']); echo date('m/d/Y H:i', $t); ?></td>
-                                    <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
+                                    <tr>
+                                        <td><?php echo $race['raceName']; ?></td>
+                                        <td><?php echo $race['raceLocation']; ?></td>
+                                        <td><?php $t = strtotime($race['raceDateTime']); echo date('m/d/Y H:i', $t); ?></td>
+                                        <td><a href="#">Edit</a> | <a href="#">Delete</a></td>
+                                    </tr>
                                 <?php endforeach; ?>
 
                                 </tbody>
