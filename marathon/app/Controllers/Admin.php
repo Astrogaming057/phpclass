@@ -50,7 +50,7 @@ class Admin extends BaseController
 
     public function edit_marathon(): string
     {
-        $raceModel = new Race();
+    $raceModel = new Race();
         $race = $raceModel->get_race($_GET['id']);
         if ($race == null) {
             $data['races'] = $raceModel->get_races();
