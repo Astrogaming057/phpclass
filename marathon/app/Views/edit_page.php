@@ -1,3 +1,4 @@
+<?php include 'include/require_login.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
