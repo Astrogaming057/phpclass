@@ -37,4 +37,14 @@ class Admin extends BaseController
         $data = array('registration_page' => 'true');
         return view('registration_page', $data);
     }
+
+
+
+    public function add_race(): string
+    {
+        $data = array('add_page' => 'true');
+        $raceModel = new Race();
+        $raceModel->add_race($_POST['race_name'], $_POST['race_date'], $_POST['race_location'], $_POST['race_description']);
+        return view('add_page', $data);
+    }
 }

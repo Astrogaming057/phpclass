@@ -7,9 +7,6 @@ use CodeIgniter\Model;
 
 class Race extends Model
 {
-    protected $table = 'races';
-    protected $primaryKey = 'id';
-    protected $allowedFields = ['name', 'date', 'location', 'distance', 'description'];
 
 
     public function get_races()
@@ -18,5 +15,17 @@ class Race extends Model
         $sql = 'Select * from race';
         $query = $db->query($sql);
         return $query->getResultArray();
+    }
+
+    public function add_race($name, $date, $location, $description)
+    {
+        try {
+            $db = db_connect();
+            $sql = 'Insert into race (raceName, raceDateTime, raceLocation, raceDescription) values (?, ?, ?, ?)';
+            $query = $db->query($sql, [$name, $date, $location, $description]);
+            return true;
+        } catch (\Exception $e) {
+            return false;
+        }
     }
 }

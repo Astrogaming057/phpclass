@@ -60,24 +60,24 @@
                 <div class="row">
                     <div class="col-lg-12">
 
-                        <form role="form">
+                        <form role="form" method="post" action="<?php echo base_url('add_race'); ?>">
 
-                            <div class="form-group">
+                            <div id="race_name" class="form-group">
                                 <label>Race Name</label>
                                 <input class="form-control" name="name">
                             </div>
 
-                            <div class="form-group">
+                            <div id="race_location" class="form-group">
                                 <label>Race Location</label>
                                 <input class="form-control" name="location">
                             </div>
 
-                            <div class="form-group">
+                            <div id="race_description" class="form-group">
                                 <label>Race Description</label>
                                 <textarea class="form-control" name="description" rows="4"></textarea>
                             </div>
 
-                            <div class="form-group">
+                            <div id="race_date" class="form-group">
                                 <label>Race Date</label>
                                 <input class="form-control" type="text" name="race_date">
                             </div>
