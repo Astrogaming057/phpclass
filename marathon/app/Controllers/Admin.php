@@ -44,7 +44,8 @@ class Admin extends BaseController
     {
         $data = array('add_page' => 'true');
         $raceModel = new Race();
-        $raceModel->add_race($_POST['race_name'], $_POST['race_date'], $_POST['race_location'], $_POST['race_description']);
+        $raceDate = str_replace('T', ' ', $_POST['race_date']);
+        $raceModel->add_race($_POST['race_name'], $raceDate, $_POST['race_location'], $_POST['race_description']);
         return view('add_page', $data);
     }
 }

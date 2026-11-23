@@ -62,24 +62,18 @@
 
                         <form role="form" method="post" action="<?php echo base_url('add_race'); ?>">
 
-                            <div id="race_name" class="form-group">
+                            <div class="form-group">
                                 <label>Race Name</label>
-                                <input class="form-control" name="name">
-                            </div>
+                                <input name="race_name" id="race_name" type="text" class="form-control">
 
-                            <div id="race_location" class="form-group">
                                 <label>Race Location</label>
-                                <input class="form-control" name="location">
-                            </div>
+                                <input name="race_location" id="race_location" type="text" class="form-control">
 
-                            <div id="race_description" class="form-group">
                                 <label>Race Description</label>
-                                <textarea class="form-control" name="description" rows="4"></textarea>
-                            </div>
+                                <textarea name="race_description" id="race_description" class="form-control" rows="3"></textarea>
 
-                            <div id="race_date" class="form-group">
                                 <label>Race Date</label>
-                                <input class="form-control" type="text" name="race_date">
+                                <input name="race_date" id="race_date" type="datetime-local" class="form-control">
                             </div>
 
                             <button type="submit" class="btn btn-default">Submit Button</button>
